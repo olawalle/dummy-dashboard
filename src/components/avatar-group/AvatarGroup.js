@@ -15,7 +15,10 @@ function AvatarGroup({ avatars }) {
             ) : (
               arr.length > 5 &&
               i === 5 && (
-                <div className="text-[12px] w-6 h-6 bg-gray-200 flex items-center justify-center rounded-full text-gray-600">
+                <div
+                  data-testid="excess-count"
+                  className="text-[12px] w-6 h-6 bg-gray-200 flex items-center justify-center rounded-full text-gray-600"
+                >
                   +{arr.length - 5}
                 </div>
               )

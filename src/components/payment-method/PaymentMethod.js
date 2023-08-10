@@ -9,18 +9,10 @@ function PaymentMethod() {
   return cards.map((card, i) => {
     return (
       <div
+        data-testid={`card`}
         key={i}
-        onClick={() => {
-          setDefaultCard(
-            cards.map((c) => {
-              return c.name === card.name
-                ? { ...c, default: true }
-                : { ...c, default: false };
-            })
-          );
-        }}
-        className={`items-start flex w-full rounded-lg bg-white border mb-4 p-4 justify-between cursor-pointer
-          ${card.default ? "bg-purple-50 border-purple-500" : ""}
+        className={`items-start flex w-full rounded-lg bg-white border mb-4 p-4 justify-between
+          ${card.default ? "bg-purple-100 border-purple-500" : ""}
           `}
       >
         <div className="flex place-items-start">
@@ -42,9 +34,19 @@ function PaymentMethod() {
             </p>
             <div className="mt-2">
               <span
+                data-testid="toggle-card"
                 className={`${
                   card.default ? "text-purple-500" : "text-gray-700"
-                } `}
+                } cusor-pointer`}
+                onClick={() => {
+                  setDefaultCard(
+                    cards.map((c) => {
+                      return c.name === card.name
+                        ? { ...c, default: true }
+                        : { ...c, default: false };
+                    })
+                  );
+                }}
               >
                 Set as default
               </span>
@@ -52,7 +54,11 @@ function PaymentMethod() {
             </div>
           </div>
         </div>
-        <img src={card.default ? check : circle} alt="" />
+        {card.default ? (
+          <img src={check} alt="" data-testid="check-icon" />
+        ) : (
+          <img src={circle} alt="" data-testid="circle-icon" />
+        )}
       </div>
     );
   });

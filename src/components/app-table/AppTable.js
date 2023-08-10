@@ -8,7 +8,7 @@ function AppTable(props) {
   const [checkAll, setCheckAll] = useState(false);
 
   return (
-    <table className="w-full rounded-xl mt-6 overflow-hidden shadow">
+    <table className="w-full md:rounded-xl mt-6 overflow-hidden shadow">
       <thead className="bg-gray-100 text-[12px] font-semibold">
         <tr className="text-left">
           <th className="text-gray-500 text-sm font-medium px-4 py-2">
@@ -22,11 +22,13 @@ function AppTable(props) {
           <th className="text-gray-500 text-sm font-medium px-4 py-2">
             Amount
           </th>
-          <th className="text-gray-500 text-sm font-medium px-4 py-2">Date</th>
-          <th className="text-gray-500 text-sm font-medium px-4 py-2">
+          <th className="text-gray-500 text-sm font-medium px-4 py-2 hidden md:table-cell">
+            Date
+          </th>
+          <th className="text-gray-500 text-sm font-medium px-4 py-2 hidden md:table-cell">
             Status
           </th>
-          <th className="text-gray-500 text-sm font-medium px-4 py-2">
+          <th className="text-gray-500 text-sm font-medium px-4 py-2 hidden md:table-cell">
             Users on plan
           </th>
           <th className="w-12"></th>
@@ -47,14 +49,16 @@ function AppTable(props) {
               Basic Plan – Nov 2022
             </td>
             <td className=" px-4 py-2 text-gray-500 font-light">$100</td>
-            <td className=" px-4 py-2 text-gray-500 font-light">Dec 1, 2022</td>
-            <td className=" px-4 py-2">
+            <td className=" px-4 py-2 text-gray-500 font-light  hidden md:table-cell">
+              Dec 1, 2022
+            </td>
+            <td className="px-4 py-2 hidden md:table-cell">
               <div className="bg-green-100 text-green-800 flex px-3 py-1 rounded-3xl w-fit text-[12px]">
                 <img src={check} alt="" className="w-4" />
                 <span className="ml-2">Paid</span>
               </div>
             </td>
-            <td className=" px-4 py-2">
+            <td className=" px-4 py-2  hidden md:table-cell">
               <div className="flex -space-x-1 overflow-hidden">
                 <AvatarGroup
                   avatars={Array.from({
@@ -63,7 +67,7 @@ function AppTable(props) {
                 />
               </div>
             </td>
-            <td className="w-12 px-4 py-2">
+            <td className="w-12 px-4 py-2  hidden md:table-cell">
               <img src={cloud} alt="" />
             </td>
           </tr>
