@@ -5,8 +5,8 @@ import Settings from "./Pages/Settings";
 
 function App() {
   const [open, setOpen] = useState(false);
-  const toggleOpen = () => {
-    setOpen(!open);
+  const toggleOpen = (val) => {
+    setOpen(val || !open);
   };
 
   return (

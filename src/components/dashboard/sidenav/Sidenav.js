@@ -28,7 +28,9 @@ function Sidenav({ open, toggleOpen }) {
 
             <div
               onClick={() => toggleOpen()}
-              className={`block md:hidden nav-icon1 ${open ? "open" : ""}`}
+              className={`block md:hidden nav-icon1 flex items-end ${
+                open ? "open" : ""
+              }`}
             >
               <span></span>
               <span></span>
@@ -42,7 +44,10 @@ function Sidenav({ open, toggleOpen }) {
             {navigationLinks.map((link, i) => (
               <div
                 data-testid={`link`}
-                onClick={() => setActiveLink(i)}
+                onClick={() => {
+                  setActiveLink(i);
+                  toggleOpen(false);
+                }}
                 key={i}
                 className={`w-full flex items-center justify-between py-2 px-2 rounded-md text-sm text-gray-700 cursor-pointer
             ${link.pullDown ? "mt-8" : "mt-2"} 
