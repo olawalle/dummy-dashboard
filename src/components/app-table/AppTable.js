@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import AvatarGroup from "../avatar-group/AvatarGroup";
 
 import cloud from "../../assets/download-cloud.svg";
 import check from "../../assets/check-green.svg";
+
 function AppTable(props) {
+  const [checkAll, setCheckAll] = useState(false);
+
   return (
     <table className="w-full rounded-xl mt-6 overflow-hidden shadow">
       <thead className="bg-gray-100 text-[12px] font-semibold">
         <tr className="text-left">
           <th className="text-gray-500 text-sm font-medium px-4 py-2">
             <input
+              onChange={(e) => setCheckAll(e.target.checked)}
               type="checkbox"
-              class="bg-white border border-gray-300 text-purple-500 focus:ring-purple-200 mr-2 rounded-md"
+              className="bg-white border border-gray-300 text-purple-500 focus:ring-purple-200 mr-2 rounded-md"
             />
             Invoice
           </th>
@@ -29,12 +33,16 @@ function AppTable(props) {
         </tr>
       </thead>
       <tbody>
-        {[1, 2, 3, 4, 5, 6, 7].map((n) => (
-          <tr className="border-b text-[14px]">
+        {Array.from({
+          length: 10,
+        }).map((x, n) => (
+          <tr className="border-b text-[14px]" key={n}>
             <td className=" px-4 py-4 text-gray-900 flex items-center">
               <input
+                checked={checkAll}
+                onChange={(e) => null}
                 type="checkbox"
-                class="bg-white border border-gray-300 text-purple-500 focus:ring-purple-200 mr-2 rounded-md"
+                className="bg-white border border-gray-300 text-purple-500 focus:ring-purple-200 mr-2 rounded-md"
               />
               Basic Plan – Nov 2022
             </td>
@@ -47,10 +55,10 @@ function AppTable(props) {
               </div>
             </td>
             <td className=" px-4 py-2">
-              <div class="flex -space-x-1 overflow-hidden">
+              <div className="flex -space-x-1 overflow-hidden">
                 <AvatarGroup
                   avatars={Array.from({
-                    length: Math.floor(Math.random() * 8) + 1,
+                    length: n,
                   })}
                 />
               </div>

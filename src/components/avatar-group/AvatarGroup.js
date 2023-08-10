@@ -5,11 +5,10 @@ function AvatarGroup({ avatars }) {
     <div className="flex">
       {avatars.map((x, i, arr) => {
         return (
-          <>
+          <div key={i}>
             {i < 5 ? (
               <img
-                key={i}
-                class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
                 src={`https://randomuser.me/api/portraits/men/${i}.jpg`}
                 alt=""
               />
@@ -21,7 +20,7 @@ function AvatarGroup({ avatars }) {
                 </div>
               )
             )}
-          </>
+          </div>
         );
       })}
     </div>

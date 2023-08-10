@@ -11,6 +11,7 @@ function DashboardHeader({ title, subtitle }) {
       <div className="mt-6 rounded-lg flex">
         {settingsTabs.map((tab, i) => (
           <div
+            key={i}
             onClick={(e) => setActiveTab(i)}
             className={`border px-4 py-2 text-[14px] text-gray-800 cursor-pointer
                 ${i === 0 ? "rounded-l-xl" : ""} 
