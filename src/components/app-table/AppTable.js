@@ -58,7 +58,7 @@ function AppTable(props) {
               <div className="flex -space-x-1 overflow-hidden">
                 <AvatarGroup
                   avatars={Array.from({
-                    length: n,
+                    length: n + 1,
                   })}
                 />
               </div>
